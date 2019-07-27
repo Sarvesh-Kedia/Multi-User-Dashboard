@@ -1,0 +1,61 @@
+input[type=text], input[type=password], select, textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+input[type=file]{
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 2px;
+    border-radius: 4px;
+
+}
+  
+  button[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+a {
+    font: bold 18px Arial;
+    text-decoration: none;
+    background-color:rgb(255, 81, 81);
+    color: #333333;
+    padding: 10px;
+    border-radius: 4px;
+
+  }
+
+table {
+    background: #778c8f;
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #18191a;
+	border-collapse: collapse;
+}
+table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+    border-color: #18191a;
+    font-size: 12px
+}
+table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #18191a;
+}
+

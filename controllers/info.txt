@@ -1,0 +1,3 @@
+this is where the routes go
+you could also just put the routes in the app.js/ index.js folder (entry point)
+for bigger files, this helps keep things organised

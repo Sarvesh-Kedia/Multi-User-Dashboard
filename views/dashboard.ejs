@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="../styles.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    
+    <h1>logged in as <i><%= accInfo.userName %></i></h1>
+    <img src='../<%= accInfo.image %>' height="100px">
+    <br>
+    <br>
+    <form action='../logout' method='GET'>
+        <button type="submit">log out</button>
+    </form>
+    <hr>
+
+
+    <form action="../dashboard/post" enctype="multipart/form-data" method="POST">
+        <h2>Add an new account</h2>
+        <input type="file" name="image" accept="image/*" />
+        <br><br>
+        <input type="text" name="userName" placeholder="User Name">
+        <br><br>
+        <input type="text" name="email" placeholder="Email">
+        <br><br>
+        <input type="password" name="password" placeholder="Password">
+        <br><br>
+        <select name = 'accType' >
+            <option value="user">User</option>
+            <% if(accInfo.accType == 'admin'){ %><option value="admin">Admin</option> <% } %>
+        </select>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    <!-- <form action="../dashboard/post/image" enctype="multipart/form-data" method="POST">
+        <h2>Add image for current account</h2>
+        <input type="file" name="userPhoto" accept="image/*" />
+        <br><br>
+        <input type="text" name="userName" placeholder="User Name">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br><br><br> -->
+
+
+    <form action=<% if(!clicked){ %>
+                        "dashboard/get"
+                  <% } else { %>  
+                        "/"
+                        <% } %>
+    
+                        method="GET">
+        <h2>Accounts</h2>
+
+        <button type="submit"><% if(!clicked){ %>
+            Show only accounts I created
+            <% } else { %>  
+            Show all accounts
+            <% } %>
+        </button>
+
+    </form>
+            <br><br>
+
+    <table border="1">
+        <tr>
+            <th>Serial No</th>
+            <th>Profile Picture</th>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Email ID</th>
+            <th>Account Type</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+
+        <% for(var i=0; i<tableInfo.length; i++) { %>
+        <tr>
+            <form action="/dashboard/update" enctype="multipart/form-data" method="POST">
+                <td><%= i+1 %></td>
+                <td>
+                    <img src='../<%= tableInfo[i].image %>' height=50px>
+                    <br>
+                    <input type="file" name="image" accept="image/*" />
+                </td>
+                <td><input name="id" type="hidden" value="<%= tableInfo[i]._id %>"><%= tableInfo[i]._id %></td>
+                <td><input type="text" name="userName" placeholder="Name" value="<%= tableInfo[i].userName %>"></td>
+                <td><input type="text" name="email" placeholder="Email" value="<%= tableInfo[i].email %>"></td>
+                <td>
+                    <select name = 'accType' >
+                        <% if(tableInfo[i].accType == 'user'){ %><option value="user">User</option> <% } %>
+                        <option value="admin">Admin</option>
+                    </select>
+                </td>
+                <td><button type="submit">Update</button></td>
+                <td><a href='dashboard/delete/<%= tableInfo[i]._id %>'>Delete</a></td>
+            </form>
+        </tr>
+        <% } %>
+
+    </table>
+
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <script src="../script.js"></script>
+</body>
+</html>
